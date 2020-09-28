@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    :root {
+      --black: rgb(48, 49, 52);
+      --blue: #1a73e8;
+      --lightblue: rgb(66, 133, 244);
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: sans-serif, Courier, monospace;
+    }
+
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      background: var(--black);
+      color: white;
+      height: 100vh;
+      width: 100%;
+    }
+
+    h2 {
+      font-size: 80px;
+      color: var(--lightblue);
+      margin: 60px;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 36px;
+      color: var(--lightblue);
+      margin: 20px 0;
+      text-transform: uppercase;
+    }
+
+    .container {
+      width: 100%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .inout {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+    }
+
+    .inout #text,
+    .inout button#create-todo {
+      padding: 5px 10px;
+      height: 50px;
+      font-size: 18px;
+      border: none;
+    }
+
+    .inout #text {
+      width: 80%;
+      border-radius: 5px 0 0 5px;
+    }
+
+    .inout button#create-todo {
+      width: 20%;
+      background: var(--blue);
+      border-radius: 0 5px 5px 0;
+      color: white;
+      cursor: pointer;
+    }
+
+    .todo-list ul,
+    .dones ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .todo-list li,
+    .dones li {
+      width: 100%;
+      background: white;
+      color: var(--black);
+      margin: 0;
+      padding: 20px;
+      border: 1px solid var(--black);
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .dones li {
+      background-color: green;
+    }
+
+    .todo-list span.action,
+    .dones span.action {
+      padding: 10px;
+      margin: 5px;
+      border-radius: 3px;
+      color: white;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .todo-list span.action.delete,
+    .dones span.action.delete {
+      background: rgb(177, 23, 23);
+
+    }
+
+    .todo-list span.action.complete,
+    .dones span.action.complete {
+      background: rgb(255, 172, 19);
+    }
+
+    .modal-window {
+      position: fixed;
+      background-color: rgba(0, 0, 0, 0.9);
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 999;
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s;
+    }
+
+    .modal-window.open {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-window div.wrapper {
+      width: 400px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 2em;
+      background: #ffffff;
+    }
+
+    .modal-close {
+      color: #aaa;
+      line-height: 50px;
+      font-size: 80%;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 0;
+      width: 70px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      color: black;
+    }
+
+    .modal-window video {
+      width: 100%;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h2 class="head">To do list app</h2>
+
+    <div class="container">
+      <div class="inout">
+        <input type="text" name="item" id="text" placeholder="Add Your Note">
+        <button id="create-todo">ADD</button>
+      </div>
+
+      <div class="todo-list">
+        <h3>Todos:</h3>
+        <ul>
+        </ul>
+      </div>
+
+      <div class="dones">
+        <h3>Dones:</h3>
+        <ul>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <script src="bundle.js"></script>
+</body>
+
+</html>
